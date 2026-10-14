@@ -1,12 +1,22 @@
+// class Solution {
+//     public boolean containsDuplicate(int[] nums) {
+//         Set<Integer> arr=new HashSet<>();
+//         for(int num:nums){
+//             if(arr.contains(num)){
+//                 return true;
+//             }
+//             arr.add(num);
+//         }
+//         return false;
+//     }
+// }
+
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        Set<Integer> arr=new HashSet<>();
-        for(int num:nums){
-            if(arr.contains(num)){
-                return true;
-            }
-            arr.add(num);
-        }
-        return false;
+        long distinctCount = Arrays.stream(nums)
+                .boxed()
+                .distinct()
+                .count();
+        return distinctCount < nums.length;
     }
 }
